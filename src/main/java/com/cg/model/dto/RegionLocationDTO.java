@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.engine.spi.ManagedEntity;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @NoArgsConstructor
@@ -17,7 +19,9 @@ import javax.validation.constraints.Size;
 @Accessors(chain = true)
 public class RegionLocationDTO {
 
+    @NotNull(message = "Region location ID is required!")
     private Long id;
+
     private String provinceId;
     private String provinceName;
     private String districtId;

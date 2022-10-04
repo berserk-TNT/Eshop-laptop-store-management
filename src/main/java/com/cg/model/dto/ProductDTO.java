@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 public class ProductDTO {
 
+    @NotNull(message = "Product ID is required!")
     private Long id;
 
     @NotBlank(message = "Image name is required!")
