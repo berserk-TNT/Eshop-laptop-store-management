@@ -10,10 +10,10 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "manufacturers")
 @Accessors(chain = true)
