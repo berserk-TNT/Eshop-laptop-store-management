@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <th:block th:replace="/layout/head :: head"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="/assets/css/iziToast-1.4.0.min.css">
+    <link rel="stylesheet" href="/assets/css/cube.css">
+</head>
+
+<body>
+
+    <div class='control'>
+        <button style="margin-left: 20px">
+            <a href="/register"> Sign Up </a>
+        </button>
+    </div>
+    <h1>Sign in</h1>
+
+    <form autocomplete='off' class='form'>
+        <div class='control block-cube block-input'>
+            <input name='username' id="usernameLogin" placeholder='Username' type='text'>
+            <div class='bg-top'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+                <div class='bg-inner'></div>
+            </div>
+        </div>
+        <div class='control block-cube block-input'>
+            <input name='password' id="passwordLogin" placeholder='Password' type='password'>
+            <div class='bg-top'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+                <div class='bg-inner'></div>
+            </div>
+        </div>
+        <button class='btn block-cube block-cube-hover' id="btnLogin" type='button'>
+            <div class='bg-top'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+                <div class='bg-inner'></div>
+            </div>
+            <div class='text'>
+                Log In
+            </div>
+        </button>
+    </form>
+
+    <div class="text-center">
+        <div class="modal-alert-danger">
+
+        </div>
+    </div>
+
+<th:block th:replace="/layout/script :: script"/>
+<script src="/assets/js/iziToast-1.4.0.js"></script>
+
+<script>
+
+    let userLogin = new User();
+
+    $("#btnLogin").on('click', function (){
+        let usernameLogin = $("#usernameLogin").val();
+        let passwordLogin = $("#passwordLogin").val();
+
+        let user = {
+            username: usernameLogin,
+            password: passwordLogin
+        }
+
+        $.ajax({
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/auth/login",
+            data: JSON.stringify(user)
+        })
+        .done((data) => {
+            userLogin = data;
+            console.log(userLogin);
+
+            App.IziToast.showSuccessAlert("Log-in success!");
+            window.location.href = "/products";
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR)
+            App.IziToast.showErrorAlert("Wrong username or password! Log-in failed!")
+        })
+    })
+
+</script>
+
+</body>
+
+</html>

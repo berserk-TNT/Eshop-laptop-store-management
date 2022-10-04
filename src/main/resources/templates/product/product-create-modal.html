@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="product-create-modal">
+
+    <div class="modal fade" id="modalCreateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row no-gutters">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="quickview-content">
+                                <h1>Create new Product</h1>
+                                <form id="formAddProduct">
+
+                                    <div class="row">
+                                        <div class="col-lg-6 mt-3">
+                                            <label for="titleCre">Title</label>
+                                            <input type="text" class="form-control" id="titleCre" name="titleCre">
+                                        </div>
+                                        <div class="col-lg-6 mt-3">
+                                            <label for="imageUrlCre">Image</label>
+                                            <input type="text" class="form-control" id="imageUrlCre" name="imageUrlCre">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 mt-3">
+                                            <label class="form-label">Manufacturer</label><br>
+                                            <select class="form-select" id="manufacturerCre" name="manufacturerCre">
+
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4 mt-3">
+                                            <label for="priceCre">Price (VND)</label>
+                                            <input type="text" class="form-control" id="priceCre" name="priceCre">
+                                        </div>
+                                        <div class="col-lg-4 mt-3">
+                                            <label for="quantityCre">Quantity</label>
+                                            <input type="text" class="form-control" id="quantityCre" name="quantityCre">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="modal-alert-danger-create hide">
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnCreateProduct">Add</button>
+                                <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

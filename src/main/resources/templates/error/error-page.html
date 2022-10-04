@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <th:block th:replace="/layout/head :: head"/>
+  <title>Error</title>
+</head>
+
+<body class="authentication-bg">
+
+<div class="account-pages pt-5 my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="text-center">
+
+          <p class="text-white mt-4">
+            Bạn không đủ quyền để xử lí các tác vụ này. Vui lòng quay lại!
+          </p>
+          <br>
+          <a class="btn btn-pink waves-effect waves-light" href="/products">Return</a>
+        </div>
+
+      </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
+<!-- end page -->
+
+
+<th:block th:replace="/layout/script :: script"/>
+
+</body>
+</html>

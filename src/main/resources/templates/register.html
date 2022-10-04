@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="/layout/head :: head"/>
+    <title>Sign Up</title>
+    <link href="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="https://colorlib.com/etc/regform/colorlib-regform-5/css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/assets/css/iziToast-1.4.0.min.css">
+    <link rel="stylesheet" href="/assets/css/register.css">
+</head>
+
+<body>
+
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class='control'>
+            <button style="margin-left: 20px">
+                <a href="/login"> Log In </a>
+            </button>
+        </div>
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Sign up your account</h2>
+                </div>
+                <div class="card-body">
+                    <form id="formRegister">
+                        <div class="form-row">
+                            <div class="name">Username:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="usernameReg" name="usernameReg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Password:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="password" id="passwordReg" name="passwordReg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Retype password:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="password" id="retypePasswordReg" name="retypePasswordReg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Name:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="fullNameReg" name="fullNameReg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Phone:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="tel" id="phoneReg" name="phoneReg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Province/City:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select id="provinceReg" name="provinceReg">
+
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">District:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select id="districtReg" name="districtReg">
+
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Ward/Town:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select id="wardReg" name="wardReg">
+
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Address:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="addressReg" name="addressReg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row" hidden>
+                            <div class="name">Role:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select id="roleReg" name="roleReg">
+                                            <option value="2">USER</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-alert-danger-register hide">
+
+                        </div>
+
+                        <div>
+                            <button type="button" id="btnRegister" class="btn btn--radius-2 btn--red">Register</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="modal-alert-danger">
+
+        </div>
+    </div>
+
+<script src="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/jquery/jquery.min.js"></script>
+<script src="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/select2/select2.min.js"></script>
+<script src="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/datepicker/moment.min.js"></script>
+<script src="https://colorlib.com/etc/regform/colorlib-regform-5/vendor/datepicker/daterangepicker.js"></script>
+<script src="https://colorlib.com/etc/regform/colorlib-regform-5/js/global.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"74c3180f3cf4123e","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.8.1","si":100}' crossorigin="anonymous"></script>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/iziToast-1.4.0.js"></script>
+
+<!-- JQuery Validate -->
+<script src="/assets/js/jquery-validate-1.19.3.min.js"></script>
+
+<script>
+
+    function drawProvinceOptions() {
+        return $.ajax({
+            header: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province",
+        })
+            .done((data) => {
+                $('#provinceReg').html('');
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.province_id}"> ${item.province_name} </option> `;
+                    $('#provinceReg').prepend(str);
+                })
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    }
+
+    function drawDistrictOptions(provinceId) {
+        return $.ajax({
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province/district/" + provinceId,
+        })
+            .done((data) => {
+                $('#districtReg').html('');
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.district_id}"> ${item.district_name} </option>`;
+                    $('#districtReg').prepend(str);
+                })
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    }
+
+    function drawWardOptions(districtId) {
+        return $.ajax({
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "https://vapi.vnappmob.com/api/province/ward/" + districtId,
+        })
+            .done((data) => {
+                $('#wardReg').html('');
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+                    $('#wardReg').prepend(str);
+                })
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    }
+
+    drawProvinceOptions().then(() => {
+        let provinceId = $('#provinceReg').val();
+        drawDistrictOptions(provinceId).then(() => {
+            let districtId = $('#districtReg').val()
+            drawWardOptions(districtId);
+        })
+    });
+
+    $('#provinceReg').on('change', function () {
+        let provinceId = $('#provinceReg').val();
+        drawDistrictOptions(provinceId).then(() => {
+            let districtId = $('#districtReg').val()
+            drawWardOptions(districtId);
+        })
+    })
+    $('#districtReg').on('change', function () {
+        let districtId = $('#districtReg').val()
+        drawWardOptions(districtId);
+    })
+
+    let user = new User();
+    let regionLocation = new RegionLocation();
+    let role = new Role();
+
+    function doRegister() {
+        user.username = $("#usernameReg").val();
+        user.password = $("#passwordReg").val();
+        user.fullName = $("#fullNameReg").val();
+        user.phone = $("#phoneReg").val();
+
+        regionLocation.provinceId = $('#provinceReg').val();
+        regionLocation.provinceName = $('#provinceReg :selected').text();
+        regionLocation.districtId = $('#districtReg').val();
+        regionLocation.districtName = $('#districtReg :selected').text();
+        regionLocation.wardId = $('#wardReg').val();
+        regionLocation.wardName = $('#wardReg :selected').text();
+        regionLocation.address = $('#addressReg').val();
+
+        role.id = $('#roleReg').val();
+        role.roleName = $('#roleReg :selected').text();
+
+        user.regionLocation = regionLocation;
+        user.role = role;
+
+        console.log(user);
+
+        $.ajax({
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/auth/register",
+            data: JSON.stringify(user)
+        })
+        .done((data) => {
+            user = data;
+            regionLocation = user.regionLocation;
+            role = user.role;
+            App.IziToast.showSuccessAlert("Register successful!");
+            $("#formRegister input").val("");
+        })
+        .fail((jqXHR) => {
+            console.log(jqXHR);
+            App.IziToast.showErrorAlert("Register failed!");
+        })
+    }
+    $("#btnRegister").on("click", () => {
+        $("#formRegister").submit();
+    })
+
+    $("#formRegister").validate({
+        rules: {
+            usernameReg: {
+                required: true,
+                minlength: 6,
+                maxlength: 30
+            },
+            passwordReg: {
+                required: true,
+                minlength: 6,
+                maxlength: 30
+            },
+            retypePasswordReg: {
+                equalTo: "#passwordReg"
+            },
+            fullNameReg: {
+                required: true,
+                minlength: 2,
+                maxlength: 50
+            },
+            phoneReg: {
+                required: true,
+            },
+            addressReg: {
+                required: true,
+                minlength: 5,
+                maxlength: 100
+            }
+        },
+        messages: {
+            usernameReg: {
+                required: "Username is required!",
+                minlength: "Username length is 8 characters minimum!",
+                maxlength: "Username length is 30 characters maximum!"
+            },
+            passwordReg: {
+                required: "Password is required!",
+                minlength: "Password length is 6 characters minimum!",
+                maxlength: "Password length is 30 characters maximum!"
+            },
+            retypePasswordReg: {
+                equalTo: "Retype password is not correct!"
+            },
+            fullNameReg: {
+                required: "Name is required!",
+                minlength: "Name length is 2 characters minimum!",
+                maxlength: "Name length is 50 characters maximum!"
+            },
+            phoneReg: {
+                required: "Phone numbers is required!"
+            },
+            addressReg: {
+                required: "Address is required!",
+                minlength: "Address length is 5 characters minimum!",
+                maxlength: "Address length is 100 characters maximum!"
+            }
+        },
+        errorLabelContainer: "#formRegister .modal-alert-danger-register",
+        errorPlacement: function (error, element) {
+            error.appendTo("#formRegister .modal-alert-danger-register");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#formRegister .modal-alert-danger-register").removeClass("hide").addClass("show");
+            } else {
+                $("#formRegister .modal-alert-danger-register").removeClass("show").addClass("hide").empty();
+                $("#formRegister input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function() {
+            doRegister();
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

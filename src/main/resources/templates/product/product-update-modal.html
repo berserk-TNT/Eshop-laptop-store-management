@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="product-update-modal">
+
+    <div class="modal fade" id="modalUpdateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row no-gutters">
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <!-- Product Slider -->
+                            <div class="single-slider" id="updateImage">
+
+                            </div>
+                            <!-- End Product slider -->
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                            <div class="quickview-content">
+                                <h1>Update product</h1>
+                                <br>
+                                <h2 id="updateProductId">   </h2>
+                                <form id="formUpdateProduct">
+                                    <input type="hidden" id="productIdUp">
+
+                                    <div class="row">
+                                        <div class="col-lg-6 mt-3">
+                                            <label for="titleUp">Title</label>
+                                            <input type="text" class="form-control" id="titleUp" name="titleUp">
+                                        </div>
+                                        <div class="col-lg-6 mt-3">
+                                            <label for="imageUrlUp">Image</label>
+                                            <input type="text" class="form-control" id="imageUrlUp" name="imageUrlUp">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 mt-3">
+                                            <label for="manufacturerNameUp">Manufacturer</label>
+                                            <input type="text" class="form-control" id="manufacturerNameUp" name="manufacturerNameUp" readonly>
+                                        </div>
+                                        <div class="col-lg-4 mt-3">
+                                            <label for="priceUp">Price (VND)</label>
+                                            <input type="text" class="form-control" id="priceUp" name="priceUp">
+                                        </div>
+                                        <div class="col-lg-4 mt-3">
+                                            <label for="quantityUp">Quantity</label>
+                                            <input type="text" class="form-control" id="quantityUp" name="quantityUp">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="modal-alert-danger-update hide">
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnUpdateProduct">Update</button>
+                                <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
