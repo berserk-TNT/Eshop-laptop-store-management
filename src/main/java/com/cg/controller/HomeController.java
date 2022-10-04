@@ -26,11 +26,12 @@ public class HomeController {
     }
 
     @GetMapping("/*")
-    public String showErrorOneSlash( ) {
+    public String showErrorOneSlash() {
         return "redirect:/error";
     }
+
     @GetMapping("/error")
-    public ModelAndView showErrorPage( ) {
+    public ModelAndView showErrorPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/error/error-page");
         return modelAndView;
