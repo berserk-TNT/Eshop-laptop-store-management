@@ -30,19 +30,20 @@ public class UserDTO {
     @NotBlank(message = "Username is required!")
     @Pattern(regexp = "^(([\\w\\d._]*)+(@[\\w]{2,})+(.[\\w]{2,3})||([\\w\\d._]*)+(@[\\w]{2,})+(.[\\w]{2,3})+(.[\\w]{2}))$",
                 message = "Username must be an email!")
-    @Size(min = 6, message = "Username contains 8 characters minimum!")
+    @Size(min = 8, message = "Username contains 8 characters minimum!")
     @Size(max = 30, message = "Username contains 30 characters maximum!")
     private String username;
 
     @NotBlank(message = "Password is required!")
+    @Pattern(regexp = "^[\\w\\d][^_]{6,30}$", message = "Password contains letters and numbers!")
     @Size(min = 6, message = "Password contains 6 characters minimum!")
     @Size(max = 30, message = "Password contains 30 characters maximum!")
     private String password;
 
     @NotBlank(message = "Name is required!")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Name contains characters only!")
-    @Size(min = 2, message = "Name contains 2 characters minimum!")
-    @Size(max = 50, message = "Name contains 50 characters maximum!")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Name contains letters only!")
+    @Size(min = 2, message = "Name contains 2 letters minimum!")
+    @Size(max = 50, message = "Name contains 50 letters maximum!")
     private String fullName;
 
     @NotBlank(message = "Phone numbers is required!")

@@ -35,6 +35,7 @@ public class ProductDTO {
     @Max(value = 100000000, message = "Price is 100.000.000 VND maximum!")
     private String price;
 
+    @NotBlank(message = "Quantity is required!")
     @Pattern(regexp = "^\\d+$", message = "Quantity must be number!")
     @Min(value = 1, message = "Quantity is 1 minimum!")
     @Max(value = 100, message = "Quantity is 100 maximum!")

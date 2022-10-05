@@ -340,10 +340,11 @@
                             })
                             .fail((jqXHR) => {
                                 console.log(jqXHR);
+
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Not enough authority',
-                                    text: 'This action is used for admin only!'
+                                    title: 'Error!',
+                                    text: 'Wrong access...'
                                 })
                             })
                     }
@@ -420,7 +421,7 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
-                    text: 'Something went wrong...'
+                    text: 'Wrong access...'
                 })
             })
     }
@@ -472,7 +473,7 @@
                     $('#modalUpdateProduct .modal-alert-danger-update').html('').removeClass('hide').addClass('show');
                     if (jqXHR.responseJSON.message) {
                         let msg = jqXHR.responseJSON.message;
-                        let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+                        let str = `<label id="message-error" class="error" for="message">${msg}</label>`
                         $('#modalUpdateProduct .modal-alert-danger-update').append(str);
 
                     } else if (jqXHR.responseJSON) {
@@ -486,7 +487,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error!',
-                        text: 'Something went wrong...'
+                        text: 'Wrong access...'
                     })
                 })
         })
@@ -576,11 +577,13 @@
             },
             priceUp: {
                 required: true,
+                digits: true,
                 min: 50000,
                 max: 100000000
             },
             quantityUp: {
                 required: true,
+                digits: true,
                 min: 1,
                 max: 100
             }
@@ -596,11 +599,13 @@
             },
             priceUp: {
                 required: "Price is required!",
+                digits: "Price must be number!",
                 min: "Price is 50.000 VND minimum!",
                 max: "Price is 100.000.000 VND maximum!"
             },
             quantityUp: {
                 required: "Quantity is required!",
+                digits: "Quantity must be number!",
                 min: "Quantity is 1 minimum!",
                 max: "Quantity is 100 maximum!"
             }
