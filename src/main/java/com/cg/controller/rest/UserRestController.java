@@ -105,11 +105,6 @@ public class UserRestController {
             throw new EmailExistsException("ID doesn't exist!");
         }
 
-        Boolean existsByUserName = userService.existsByUsernameAndIdIsNot(userUpdateDTO.getUsername(), userUpdateDTO.getId());
-        if (existsByUserName) {
-            throw new EmailExistsException("Username existed!");
-        }
-
         Boolean existsByPhone = userService.existsByPhoneAndIdIsNot(userUpdateDTO.getPhone(), userUpdateDTO.getId());
         if (existsByPhone) {
             throw new EmailExistsException("Phone numbers existed!");

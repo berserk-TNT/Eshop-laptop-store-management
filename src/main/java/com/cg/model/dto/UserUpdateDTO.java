@@ -27,17 +27,10 @@ public class UserUpdateDTO {
 
     private String imageUrl;
 
-    @NotBlank(message = "Username is required!")
-    @Pattern(regexp = "^(([\\w\\d._]*)+(@[\\w]{2,})+(.[\\w]{2,3})||([\\w\\d._]*)+(@[\\w]{2,})+(.[\\w]{2,3})+(.[\\w]{2}))$",
-            message = "Username must be an email!")
-    @Size(min = 6, message = "Username contains 8 characters minimum!")
-    @Size(max = 30, message = "Username contains 30 characters maximum!")
-    private String username;
-
     @NotBlank(message = "Name is required!")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Name contains characters only!")
-    @Size(min = 2, message = "Name contains 2 characters minimum!")
-    @Size(max = 50, message = "Name contains 50 characters maximum!")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Name contains letters only!")
+    @Size(min = 2, message = "Name contains 2 letters minimum!")
+    @Size(max = 50, message = "Name contains 50 letters maximum!")
     private String fullName;
 
     @NotBlank(message = "Phone numbers is required!")
@@ -57,10 +50,9 @@ public class UserUpdateDTO {
     @JsonFormat(pattern = "HH:mm - dd/MM/yyyy", timezone = "Asia/Ho_Chi_Minh")
     private Date updatedAt;
 
-    public UserUpdateDTO(Long id, String imageUrl, String username, String fullName, String phone, RegionLocation regionLocation, Role role) {
+    public UserUpdateDTO(Long id, String imageUrl, String fullName, String phone, RegionLocation regionLocation, Role role) {
         this.id = id;
         this.imageUrl = imageUrl;
-        this.username = username;
         this.fullName = fullName;
         this.phone = phone;
         this.regionLocation = regionLocation.toRegionLocationDTO();
@@ -72,7 +64,6 @@ public class UserUpdateDTO {
         return new User()
                 .setId(id)
                 .setImageUrl(imageUrl)
-                .setUsername(username)
                 .setFullName(fullName)
                 .setPhone(phone)
                 .setRegionLocation(regionLocation.toRegionLocation())
