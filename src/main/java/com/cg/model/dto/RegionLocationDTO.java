@@ -19,9 +19,7 @@ import javax.validation.constraints.Size;
 @Accessors(chain = true)
 public class RegionLocationDTO {
 
-    @NotNull(message = "Region location ID is required!")
     private Long id;
-
     private String provinceId;
     private String provinceName;
     private String districtId;

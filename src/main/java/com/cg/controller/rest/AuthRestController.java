@@ -90,10 +90,10 @@ public class AuthRestController {
         userDTO.getRole().setId(2L);
         userDTO.getRole().setRoleName("USER");
 
-        Boolean existsById  = userService.existsById(userDTO.getId());
-        if (existsById) {
-            throw new EmailExistsException("User ID existed!");
-        }
+//        Boolean existsById  = userService.existsById(userDTO.getId());
+//        if (existsById) {
+//            throw new EmailExistsException("User ID existed!");
+//        }
 
         Boolean existsByUsername = userService.existsByUsername(userDTO.getUsername());
         if (existsByUsername) {

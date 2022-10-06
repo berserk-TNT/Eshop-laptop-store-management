@@ -295,11 +295,27 @@
         })
         .fail((jqXHR) => {
             console.log(jqXHR);
+
+            $('#formRegister .modal-alert-danger-register').html('').removeClass('hide').addClass('show');
+            if (jqXHR.responseJSON.message) {
+                let msg = jqXHR.responseJSON.message;
+                let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+                $('#formRegister .modal-alert-danger-register').append(str);
+
+            } else if (jqXHR.responseJSON) {
+                $.each(jqXHR.responseJSON, (key, item) => {
+                    let str = `<label id="${key}-error" class="error" for="${key}">${item}</label>`;
+                    $("#" + key).addClass("error");
+                    $('#formRegister .modal-alert-danger-register').append(str);
+                })
+            }
+
             App.IziToast.showErrorAlert("Register failed!");
         })
     }
+
     $("#btnRegister").on("click", () => {
-        $("#formRegister").submit();
+        $("#formRegister").trigger("submit");
     })
 
     $("#formRegister").validate({

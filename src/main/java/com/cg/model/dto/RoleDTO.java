@@ -15,9 +15,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class RoleDTO {
 
-    @NotNull(message = "Role ID is required!")
     private Long id;
-
     private String roleName;
 
     public Role toRole() {

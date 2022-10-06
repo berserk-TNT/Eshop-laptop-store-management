@@ -15,9 +15,7 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 public class ManufacturerDTO {
 
-    @NotNull(message = "Manufacturer ID is required")
     private Long id;
-
     private String manufacturerName;
 
     public Manufacturer toManufacturer() {
