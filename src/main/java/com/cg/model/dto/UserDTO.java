@@ -35,7 +35,7 @@ public class UserDTO {
     private String username;
 
     @NotBlank(message = "Password is required!")
-    @Pattern(regexp = "^[\\w\\d][^_]{5,29}$", message = "Password contains letters or numbers!")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,30}$", message = "Password contains both letters and numbers!")
     @Size(min = 6, message = "Password contains 6 characters minimum!")
     @Size(max = 30, message = "Password contains 30 characters maximum!")
     private String password;
