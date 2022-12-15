@@ -140,7 +140,6 @@
 
     let product = new Product();
     let manufacturer = new Manufacturer();
-    //let productId = null;
 
     function renderProduct(product) {
         let str = `
@@ -157,7 +156,7 @@
                                 <a class="delete" data-id="${product.id}"><i class="far fa-trash-alt"></i><span>Remove from List</span></a>
                             </div>
                             <div class="product-action-2">
-                                <a title="Add to cart" href="#">Add to cart</a>
+<!--                                <a title="Add to cart" href="#">Add to cart</a>-->
                             </div>
                         </div>
                     </div>
@@ -320,7 +319,6 @@
                     confirmButtonText: 'Yes!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        product.deleted = 1;
                         $.ajax({
                             headers: {
                                 accept: "application/json",

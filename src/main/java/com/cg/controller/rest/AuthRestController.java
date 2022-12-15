@@ -105,8 +105,8 @@ public class AuthRestController {
             throw new EmailExistsException("Phone numbers existed!");
         }
 
-        Optional<Role> role = roleService.findById(userDTO.getRole().getId());
-        if (!role.isPresent()){
+        Optional<Role> optionalRole = roleService.findById(userDTO.getRole().getId());
+        if (!optionalRole.isPresent()){
             throw new EmailExistsException("Role ID doesn't existed!");
         }
 

@@ -48,11 +48,11 @@ public class UserRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable long id) {
-        Optional<User> userOptional = userService.findById(id);
-        if (!userOptional.isPresent()) {
+        Optional<User> optionalUser = userService.findById(id);
+        if (!optionalUser.isPresent()) {
             throw new ResourceNotFoundException("Invalid user ID!");
         }
-        return new ResponseEntity<>(userOptional.get().toUserDTO(), HttpStatus.OK);
+        return new ResponseEntity<>(optionalUser.get().toUserDTO(), HttpStatus.OK);
     }
 
     @PostMapping("/create")
@@ -127,11 +127,11 @@ public class UserRestController {
     }
 
     @PatchMapping("/remove/{id}")
-    public ResponseEntity<?> getAllUserDTO(@PathVariable Long id) {
-        Optional<User> user = userService.findById(id);
-        if(user.isPresent()) {
-            user.get().setDeleted(true);
-            userService.save(user.get());
+    public ResponseEntity<?> doRemove(@PathVariable Long id) {
+        Optional<User> optionalUser = userService.findById(id);
+        if(optionalUser.isPresent()) {
+            optionalUser.get().setDeleted(true);
+            userService.save(optionalUser.get());
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } else {
             throw new DataInputException("Data error!");

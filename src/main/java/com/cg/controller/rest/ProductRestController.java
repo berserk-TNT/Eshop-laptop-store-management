@@ -45,11 +45,11 @@ public class ProductRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getProductById(@PathVariable long id) {
-        Optional<Product> productOptional = productService.findById(id);
-        if (!productOptional.isPresent()) {
+        Optional<Product> optionalProduct = productService.findById(id);
+        if (!optionalProduct.isPresent()) {
             throw new ResourceNotFoundException("Invalid product ID!");
         }
-        return new ResponseEntity<>(productOptional.get().toProductDTO(), HttpStatus.OK);
+        return new ResponseEntity<>(optionalProduct.get().toProductDTO(), HttpStatus.OK);
     }
 
     @PostMapping("/create")
@@ -65,8 +65,9 @@ public class ProductRestController {
         }
 
         productDTO.setId(0L);
-        Optional<Manufacturer> category = manufacturerService.findById(productDTO.getManufacturer().getId());
-        if (!category.isPresent()) {
+
+        Optional<Manufacturer> optionalManufacturer = manufacturerService.findById(productDTO.getManufacturer().getId());
+        if (!optionalManufacturer.isPresent()) {
             throw new EmailExistsException("Manufacturer ID doesn't exist!");
         }
         try {
@@ -94,8 +95,8 @@ public class ProductRestController {
             throw new EmailExistsException("Title existed!");
         }
 
-        Optional<Manufacturer> manufacturer = manufacturerService.findById(productDTO.getManufacturer().getId());
-        if (!manufacturer.isPresent()) {
+        Optional<Manufacturer> optionalManufacturer = manufacturerService.findById(productDTO.getManufacturer().getId());
+        if (!optionalManufacturer.isPresent()) {
             throw new EmailExistsException("Manufacturer ID doesn't exist!");
         }
 
@@ -108,11 +109,11 @@ public class ProductRestController {
     }
 
     @PatchMapping("/remove/{id}")
-    public ResponseEntity<?> removeAllProductDTO(@PathVariable Long id) {
-        Optional<Product> product = productService.findById(id);
-        if (product.isPresent()) {
-            product.get().setDeleted(true);
-            productService.save(product.get());
+    public ResponseEntity<?> doRemoveProduct(@PathVariable Long id) {
+        Optional<Product> optionalProduct = productService.findById(id);
+        if (optionalProduct.isPresent()) {
+            optionalProduct.get().setDeleted(true);
+            productService.save(optionalProduct.get());
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } else {
             throw new DataInputException("Data error!");

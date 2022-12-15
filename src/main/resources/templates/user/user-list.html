@@ -411,7 +411,6 @@
                     confirmButtonText: 'Yes!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        user.deleted = 1;
                         $.ajax({
                             headers: {
                                 accept: "application/json",

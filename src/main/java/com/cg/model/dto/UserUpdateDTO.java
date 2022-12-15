@@ -27,6 +27,8 @@ public class UserUpdateDTO {
 
     private String imageUrl;
 
+    private String username;
+
     @NotBlank(message = "Name is required!")
     @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Name contains letters only!")
     @Size(min = 2, message = "Name contains 2 letters minimum!")
@@ -50,9 +52,10 @@ public class UserUpdateDTO {
     @JsonFormat(pattern = "HH:mm - dd/MM/yyyy", timezone = "Asia/Ho_Chi_Minh")
     private Date updatedAt;
 
-    public UserUpdateDTO(Long id, String imageUrl, String fullName, String phone, RegionLocation regionLocation, Role role) {
+    public UserUpdateDTO(Long id, String imageUrl, String username, String fullName, String phone, RegionLocation regionLocation, Role role) {
         this.id = id;
         this.imageUrl = imageUrl;
+        this.username = username;
         this.fullName = fullName;
         this.phone = phone;
         this.regionLocation = regionLocation.toRegionLocationDTO();
@@ -64,6 +67,7 @@ public class UserUpdateDTO {
         return new User()
                 .setId(id)
                 .setImageUrl(imageUrl)
+                .setUsername(username)
                 .setFullName(fullName)
                 .setPhone(phone)
                 .setRegionLocation(regionLocation.toRegionLocation())
